@@ -1,0 +1,5 @@
+cp 'bin/kernel.bin' 'external/iso/boot/kernel.bin'
+cp 'ramdisk.img' 'external/iso/boot/ramdisk.img'
+cp 'build/grub.cfg' 'external/iso/boot/grub/grub.cfg'
+grub-mkrescue -o 'NOS.iso' 'external/iso'
+cp 'NOS.iso' 'NOS_FLP.img'

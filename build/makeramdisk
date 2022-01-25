@@ -1,0 +1,5 @@
+create 4194304
+add kernel.dump external/ramdisk/kernel.dump
+save ramdisk.img
+print
+exit

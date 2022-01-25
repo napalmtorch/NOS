@@ -1,0 +1,5 @@
+sh "build/scripts/build_kernel.sh"
+sh "build/scripts/build_user.sh"
+sh "build/scripts/build_fs.sh"
+sh "build/scripts/build_iso.sh"
+sh "build/scripts/build_run.sh"
