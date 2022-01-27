@@ -61,7 +61,12 @@ int idle_main(char** argv, int argc);
 
 process_t* proc_create_kernel();
 process_t* proc_create(char* name, thread_t* entry_thread);
-process_t* proc_create_elf(char* name, array_t* elf_data);
+process_t* proc_create_elf(char* name, array_t* elf_data, char** argv, int argc);
+bool       proc_load_thread(process_t* proc, thread_t* thread);
+bool       proc_unload_thread(process_t* proc, thread_t* thread);
+bool       proc_msg_is_ready(process_t* proc);
+bool       proc_msg_push(process_t* proc, process_msg_t msg);
+process_msg_t proc_msg_pop(process_t* proc);
 
 void procmgr_init();
 void procmgr_ready();

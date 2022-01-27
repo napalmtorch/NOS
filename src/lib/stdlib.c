@@ -21,12 +21,12 @@ void* malloc_c(size_t size)
     return heap_alloc(&HEAP_USER, size, true, HEAPTYPE_USED); 
 }
 
-void* malloc_a(size_t size, HEAPTYPE type)
+void* malloc_a(size_t size, uint8_t type)
 {
     
 }
 
-void* kmalloc(size_t size, HEAPTYPE type) { return heap_alloc(&HEAP_KERNEL, size, true, type); }
+void* kmalloc(size_t size, uint8_t type) { return heap_alloc(&HEAP_KERNEL, size, true, type); }
 
 void free(void* ptr)
 {

@@ -3,6 +3,7 @@
 [EXTERN _thread_next]
 
 _thread_switch:
+    cli
     mov EAX, [_thread_current]
 
     mov [EAX+0],  ESP

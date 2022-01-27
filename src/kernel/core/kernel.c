@@ -39,6 +39,7 @@ void kernel_bootstage_0()
     // initialize heaps
     heap_init(&HEAP_KERNEL, VIRT_KHEAP, 64  * MB, 4096);
     heap_init(&HEAP_USER,   VIRT_UHEAP, 512 * MB, 8192);
+    HEAP_KERNEL.messages = false;
 
     // initialize process manager
     procmgr_init();
@@ -52,8 +53,26 @@ void kernel_bootstage_0()
     vdrive_t* ramdrive = vdrive_init("RAMDISK", 'A', VDRIVETYPE_RAMDISK, ramvfs);
     vfs_init(ramvfs, ramvfs->type);
 
+    // load kernel objdump
+    objdump_load(&KERNEL_OBJDUMP, "A:/kernel.dump");
+    KERNEL_OBJDUMP.methods = objdump_parse(&KERNEL_OBJDUMP);
+
+    // load test process
+    vfs_file_t prog_file = vfs_file_read("A:/vesa.bin");
+    array_t prog_data = (array_t){ .items = prog_file.data, .item_size = 1, .count = prog_file.size };
+    process_t* proc = proc_create_elf(prog_file.name, &prog_data, NULL, 0);
+    procmgr_load(proc);
+
     // initialize programmable interval timer
     pit_init(5000, pit_callback);
+
+    // initialize real-time clock
+    rtc_init();
+
+    FONT_DEFAULT = (font_t){ .width = 8, .height = 16, .spacing_x = -1, .spacing_y = 0, .data = FONTDATA_DEFAULT };
+
+    // initialize system calls
+    syscall_init();
 }
 
 void kernel_bootstage_1()
@@ -75,6 +94,7 @@ void kernel_main()
         debug_info("KERNEL TPS: %d", fps);
     }
 
+    syscall_monitor();
     procmgr_schedule(false);
 }
 

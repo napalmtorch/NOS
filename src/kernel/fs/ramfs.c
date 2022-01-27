@@ -22,6 +22,7 @@ ramfs_file_t ramfs_read_file(ramfs_t* ramfs, char* filename)
     {
         if (ramfs->info->files[i].size == 0) { continue; }
         if (ramfs->info->files[i].data == NULL) { continue; }
+        //printf("RAMFS FILE: '%s'\n", ramfs->info->files[i].name);
         if (!strcmp(ramfs->info->files[i].name, filename)) 
         { 
             ramfs_file_t output;

@@ -42,4 +42,26 @@ typedef struct
     uint32_t length_low;
     uint32_t length_high;
     uint32_t type;
+    
 } PACKED mmap_entry_t;
+typedef struct
+{
+    uint16_t     attributes;
+    uint8_t      window_a, Window_b;
+    uint16_t     granularity;
+    uint16_t     window_size;
+    uint16_t     segment_a, Segment_b;
+    uint16_t     window_func[2];
+    uint16_t     pitch, width, height;
+    uint8_t      char_width, char_height, planes, depth, banks;
+    uint8_t      memory_model, bank_size, image_pages;
+    uint8_t      reserved0;
+    uint8_t      red_mask, red_position;
+    uint8_t      green_mask, green_position;
+    uint8_t      blue_mask, blue_position;
+    uint8_t      rsv_mask, rsv_position;
+    uint8_t      direct_color;
+    uint32_t     physical_base;
+    uint32_t     reserved1;
+    uint16_t     reserved2;
+} PACKED vesa_mode_info_t;

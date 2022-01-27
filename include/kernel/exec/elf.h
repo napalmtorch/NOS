@@ -47,3 +47,7 @@ typedef struct
 
 /// @brief Validate identifier of ELF header @param header ELF file header @return Successfully validated header
 bool elf_validate(elf_header_t* header);
+
+bool elf_load(uint8_t* data, uint32_t size, void* process);
+
+bool elf_load_file(char* filename, void* proc);

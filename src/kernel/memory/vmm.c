@@ -20,6 +20,10 @@ void vmm_init()
         vmm_kmap(VIRT_KERNEL + i, i, true);
     }
 
+    // map framebuffer
+    vesa_mode_info_t* vesa = MBOOT_HDR->vbe_mode_info;
+    vmm_kmap(vesa->physical_base, vesa->physical_base, true);
+
     regwrite_cr3(phys);
 
     debug_ok("Initialized VMM");

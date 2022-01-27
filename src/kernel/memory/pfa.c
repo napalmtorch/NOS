@@ -18,9 +18,9 @@ bool         pfa_ready = false;
 
 void pfa_init_kernel()
 {
-    pfa_kstart   = mem_align(kernel_get_physical_end() + 0x1000, 0x1000);
+    pfa_kstart   = mem_align((uint32_t)&_boot_page_dir0 + 0x2000, 0x1000) - VIRT_KERNEL;
     pfa_kaddr    = pfa_kstart;
-    pfa_ksize    = (4 * MB) - (uint32_t)pfa_kstart;
+    pfa_ksize    = ((uint32_t)&_boot_page_dir0_end - VIRT_KERNEL) - pfa_kstart;
     pfa_ready    = false;
     (void)pmm_create_ext(pfa_kaddr, pfa_ksize, PMMTYPE_PFA);
 }
@@ -47,7 +47,7 @@ void pfa_init(uint32_t size)
 
 void pfa_map(void* pagedir)
 {
-    debug_info("Mapping page-frame allocator 0x%8x...", ((pagedir_t*)pagedir)->address);
+    debug_info("Mapping page-frame allocator onto directory at 0x%8x...", ((pagedir_t*)pagedir)->address);
     for (uint32_t i = 0; i <= pfa_size; i += 4 * MB) 
     { 
         if (pfa_ready) { pagedir_map(pagedir, PHYS_PFA + i, PHYS_PFA + i, false); }

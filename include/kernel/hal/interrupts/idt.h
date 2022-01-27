@@ -19,7 +19,7 @@ typedef enum
     IRQ13,
     IRQ14,
     IRQ15,
-    IRQ_SYSCALL,
+    IRQ_SYSCALL = 160,
 } IRQ;
 
 typedef enum

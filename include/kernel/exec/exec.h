@@ -4,6 +4,7 @@
 
 typedef struct
 {
+    uint8_t*          elf_data;
     uint8_t*          data;
     uint32_t          size;
     elf_header_t*     elf;

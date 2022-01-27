@@ -7,6 +7,7 @@ void thread_exit();
 
 thread_t* _thread_current;
 thread_t* _thread_next;
+uint32_t  thread_id = 0;
 
 thread_t* thread_create_kernel()
 {
@@ -15,7 +16,8 @@ thread_t* thread_create_kernel()
     _thread_current = thread;
     
     strcpy(thread->name, KTHREAD_NAME);
-    thread->id    = 0;
+    thread_id     = 0;
+    thread->id    = thread_id++;
     thread->state = THREADSTATE_RUNNING;
     
     thread->ctrl.entry         = _kernel_entry;
@@ -34,7 +36,7 @@ thread_t* thread_create_idle()
     thread_t* thread = kmalloc(sizeof(thread_t), HEAPTYPE_THREAD);
 
     strcpy(thread->name, "idle");
-    thread->id = 1;
+    thread->id = thread_id++;
     thread->state = THREADSTATE_RUNNING;
 
         // set thread control block
@@ -66,8 +68,8 @@ thread_t* thread_create(char* name, uint32_t stack_size, thread_entry_t entry, c
 
     // set thread id
     strcpy(thread->name, name);
-    thread->id     = 0;
-    thread->state  = THREADSTATE_HALTED;
+    thread->id     = thread_id++;
+    thread->state  = THREADSTATE_RUNNING;
 
     // set thread control block
     thread->ctrl.entry      = entry;
@@ -84,7 +86,13 @@ thread_t* thread_create(char* name, uint32_t stack_size, thread_entry_t entry, c
     *--stk = (uint32_t)entry;
 
     // set thread registers
-    thread->ctrl.registers = (thread_regs_t){ .eflags = 0x202, .esp = (uint32_t)stk, .esi = (uint32_t)entry };
+    thread->ctrl.registers = (thread_regs_t)
+    { 
+        .eflags = 0x202, 
+        .esp = (uint32_t)stk, 
+        .esi = (uint32_t)entry, 
+        .cr3 = vmm_get_kdir()->address,
+    };
 
     // finished
     debug_info("Created thread - ID: %d, ENTRY: 0x%8x, STACK: 0x%8x-0x%8x, NAME: '%s'", 
@@ -94,5 +102,14 @@ thread_t* thread_create(char* name, uint32_t stack_size, thread_entry_t entry, c
 
 void thread_exit()
 {
+    asm volatile("cli");
+    register int eax asm("eax");
+    uint32_t exit_code = eax;
 
+    asm volatile("cli");
+    debug_info("Thread '%s' exited with code %d", _thread_current->name, exit_code);
+    _thread_current->state = THREADSTATE_TERMINATED;
+    asm volatile("sti");
+
+    while (true);
 }

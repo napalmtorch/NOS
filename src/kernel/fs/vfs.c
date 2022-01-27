@@ -14,6 +14,7 @@ void vfs_init(vfs_t* vfs, VFSTYPE type)
         multiboot_module_t* mod = (multiboot_module_t*)MBOOT_HDR->modules_addr;
         uint8_t* ramdisk = (uint8_t*)mod->address_start;
         ramfs_t* ramfs = kmalloc(sizeof(ramfs_t), HEAPTYPE_OBJECT);
+        debug_info("RAMFS MOD - ADDR: 0x%8x-0x%8x, STR: '%s'", mod->address_start, mod->address_end, (char*)mod->string);
         ramfs_init(ramfs, ramdisk, mod->address_end - mod->address_start);
         vfs->fs = ramfs;
         valid = true;
@@ -77,10 +78,10 @@ vfs_file_t vfs_file_read_ramfs(vfs_t* vfs, char* filename)
     vfs_file_t output;
     output.name   = kmalloc(strlen(ramfile.name), HEAPTYPE_STRING);
     output.parent = NULL;
-    output.data   = kmalloc(ramfile.size, HEAPTYPE_ARRAY);
+    output.data   = kmalloc(ramfile.size + 8, HEAPTYPE_ARRAY);
     output.size   = ramfile.size;
     output.status = VFSSTATUS_DEFAULT;
-    memcpy(output.data, ramfile.data, ramfile.size);
+    memcpy(output.data, ramfile.data, ramfile.size + 8);
     strcpy(output.name, ramfile.name);
     return output;
 }

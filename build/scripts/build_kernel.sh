@@ -51,18 +51,20 @@ done
 # ----------------------------------------------- LIB --------------------------------------------------------------
 cdir="src/lib/"
 outdir="bin/objs/"
-files=$(find $cdir -name "*.c" -print)
-
-for file in $files; do
-    inf="$(basename $file)"
-    outf="$(echo ${inf%.*}.o)"
-    i686-elf-gcc -Iinclude -c "$file" -o "$outdir$outf" -w -nostdlib -ffreestanding -Wall -Wextra -O0 -fno-rtti -fno-exceptions -fshort-enums
-    echo "$cmsgl$inf$cmsgm$outdir$outf$cmsge"
-done
+i686-elf-gcc -Iinclude -c "$cdir/ctype.c" -o "$outdir/ctype.o" -w -nostdlib -ffreestanding -Wall -Wextra -O0 -fno-rtti -fno-exceptions -fshort-enums
+i686-elf-gcc -Iinclude -c "$cdir/stddef.c" -o "$outdir/stddef.o" -w -nostdlib -ffreestanding -Wall -Wextra -O0 -fno-rtti -fno-exceptions -fshort-enums
+i686-elf-gcc -Iinclude -c "$cdir/stdio.c" -o "$outdir/stdio.o" -w -nostdlib -ffreestanding -Wall -Wextra -O0 -fno-rtti -fno-exceptions -fshort-enums
+i686-elf-gcc -Iinclude -c "$cdir/stdlib.c" -o "$outdir/stdlib.o" -w -nostdlib -ffreestanding -Wall -Wextra -O0 -fno-rtti -fno-exceptions -fshort-enums
+i686-elf-gcc -Iinclude -c "$cdir/string.c" -o "$outdir/string.o" -w -nostdlib -ffreestanding -Wall -Wextra -O0 -fno-rtti -fno-exceptions -fshort-enums
+i686-elf-gcc -Iinclude -c "$cdir/time.c" -o "$outdir/time.o" -w -nostdlib -ffreestanding -Wall -Wextra -O0 -fno-rtti -fno-exceptions -fshort-enums
+i686-elf-gcc -Iinclude -c "$cdir/graphics/font.c" -o "$outdir/font.o" -w -nostdlib -ffreestanding -Wall -Wextra -O0 -fno-rtti -fno-exceptions -fshort-enums
+echo "Compiled kernel libraries"
 
 # Link all files
 cd 'bin/objs'
 i686-elf-ld -T '../../build/linker.ld' -o '../kernel.bin' "../boot.o" *.o -O0
 cd '../../'
 
-objdump -dwarf -Mintel "bin/kernel.bin" > "build/dumps/kernel.dump"
+objdump -t "bin/kernel.bin" > "build/dumps/kernel.objdump"
+
+./ndumper build/dumps/kernel.objdump build/dumps/kernel.dump

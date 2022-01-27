@@ -9,10 +9,12 @@
 #include <lib/string.h>
 #include <lib/time.h>
 #include <lib/graphics/color.h>
+#include <lib/graphics/font.h>
 #include <kernel/exec/elf.h>
 #include <kernel/exec/exec.h>
 #include <kernel/exec/process.h>
 #include <kernel/exec/thread.h>
+#include <kernel/exec/objdump.h>
 #include <kernel/memory/memory.h>
 #include <kernel/memory/pmm.h>
 #include <kernel/memory/vmm.h>
@@ -24,9 +26,11 @@
 #include <kernel/hal/common/serial.h>
 #include <kernel/hal/common/registers.h>
 #include <kernel/hal/common/pit.h>
+#include <kernel/hal/common/rtc.h>
 #include <kernel/hal/common/atapio.h>
 #include <kernel/hal/interrupts/gdt.h>
 #include <kernel/hal/interrupts/idt.h>
+#include <kernel/hal/interrupts/syscall.h>
 #include <kernel/fs/vdrive.h>
 #include <kernel/fs/vfs.h>
 #include <kernel/fs/pmfs.h>

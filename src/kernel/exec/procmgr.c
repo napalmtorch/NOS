@@ -6,7 +6,7 @@ extern void _thread_switch();
 int procmgr_free_index();
 
 process_mgr_t PROCMGR;
-bool          proc_switch;
+bool          proc_switch, proc_unloaded;
 uint32_t      proc_index_old;
 
 void procmgr_init()
@@ -29,7 +29,7 @@ void procmgr_init()
 void procmgr_ready()
 {
     PROCMGR.ready     = true;
-    procmgr_schedule(false);
+    PROCMGR.pit_ready = true;
 }
 
 void procmgr_unready()
@@ -40,17 +40,53 @@ void procmgr_unready()
 
 bool procmgr_load(process_t* proc)
 {
-
+    if (proc == NULL) { debug_error("Tried to load null process"); return false; }
+    int i = procmgr_free_index();
+    if (i < 0 || i >= PROCMGR_COUNT) { debug_error("Maximum amount of processes reached"); return false; }
+    PROCMGR.processes[i] = proc;
+    PROCMGR.processes[i]->running = true;
+    PROCMGR.count++;
+    debug_info("Loaded process %d('%s')", proc->id, proc->name);
+    return true;
 }
 
 bool procmgr_unload(process_t* proc)
 {
+    if (proc == NULL) { debug_error("Tried to unload null process"); return false; }
+    for (int i = 0; i < PROCMGR_COUNT; i++)
+    {
+        if (PROCMGR.processes[i] == proc)
+        {
+            for (int j = 0; j < THREAD_COUNT; j++)
+            {
+                if (PROCMGR.processes[i]->ctrl.threads[j] == NULL) { continue; }
+                PROCMGR.processes[i]->ctrl.threads[j]->state = THREADSTATE_TERMINATED;
+                proc_unload_thread(PROCMGR.processes[i], PROCMGR.processes[i]->ctrl.threads[j]);
+            }
 
+            debug_info("Unloading process %d('%s')", proc->id, proc->name);
+            kfree(PROCMGR.processes[i]->executable.elf_data);
+            kfree(PROCMGR.processes[i]->ctrl.threads);
+            //kfree(PROCMGR.processes[i]->page_dir);
+            kfree(PROCMGR.processes[i]);
+            PROCMGR.processes[i] = NULL;
+            PROCMGR.count--;
+            debug_ok("Finished unloading process");
+            return true;
+        }
+    }
+
+    return false;
 }
 
 bool procmgr_kill(process_t* proc)
 {
-
+    if (proc == NULL) { return false; }
+    for (int i = 1; i < PROCMGR_COUNT; i++)
+    {
+        if (PROCMGR.processes[i] == proc) { PROCMGR.processes[i]->running = false; return true; }
+    }
+    return false;
 }
 
 bool procmgr_kill_byname(char* name)
@@ -68,6 +104,7 @@ bool procmgr_kill_byindex(int index)
 
 }
 
+thread_t* curthread;
 void procmgr_schedule(bool interrupts)
 {
     PROCMGR.pit_ready = false;
@@ -90,17 +127,20 @@ void procmgr_schedule(bool interrupts)
 
     if (PROCMGR.current->ctrl.switches >= PROCMGR.current->ctrl.count) { PROCMGR.current->ctrl.switches = 0; proc_switch = true; }
 
-    if (_thread_next != NULL && _thread_next->state == THREADSTATE_TERMINATED)
+    if (_thread_next != NULL)
     {
-        // unload thread
+        if (_thread_next->state == THREADSTATE_TERMINATED) { proc_unload_thread(PROCMGR.current, _thread_next); proc_unloaded = true; }
         proc_switch = true;
     }
 
     if (proc_switch)
     {
         PROCMGR.next = procmgr_next_process();
-        if (PROCMGR.next != PROCMGR.current) { _thread_next = PROCMGR.next->ctrl.threads[0]; }
+        if (proc_unloaded) { PROCMGR.next = PROCMGR.processes[0]; _thread_next = PROCMGR.next->ctrl.threads[0]; PROCMGR.index = 0; PROCMGR.next->ctrl.index = 0; }
+        if (PROCMGR.next != PROCMGR.current) { _thread_next = PROCMGR.next->ctrl.threads[0]; PROCMGR.next->ctrl.index = 0; }
+        //debug_info("CUR - P: '%s', T: '%s'   |   NEXT - P: '%s', T: '%s'\n", PROCMGR.current->name, _thread_current->name, PROCMGR.next->name, _thread_next->name);
         PROCMGR.current = PROCMGR.next;
+        proc_unloaded = false;
     }
     else { PROCMGR.next = PROCMGR.current; }
 
@@ -118,6 +158,7 @@ process_t* procmgr_next_process()
         if (!PROCMGR.processes[PROCMGR.index]->running)
         {
             procmgr_unload(PROCMGR.processes[PROCMGR.index]);
+            proc_unloaded = true;
             PROCMGR.index = 0;
             return PROCMGR.processes[0];
         }

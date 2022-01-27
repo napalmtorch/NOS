@@ -1,0 +1,540 @@
+
+bin/kernel.bin:     file format elf32-i386
+
+SYMBOL TABLE:
+c0100030 l    d  .text	00000000 .text
+c010e000 l    d  .data	00000000 .data
+c0190000 l    d  .rodata	00000000 .rodata
+c0100056 l       .text	00000000 _start_higher_half
+c018e000 l     O .data	00000084 EXCEPTION_MSGS
+c01901d8 l     O .rodata	00000010 SYSCALL_VPRINTF
+c01901f0 l     O .rodata	00000010 SYSCALL_METHODS
+c0190208 l     O .rodata	00000010 SYSCALL_VBEMODE
+c018e0a0 l     O .data	00000084 EXCEPTION_MSGS
+c0190430 l     O .rodata	00000010 SYSCALL_VPRINTF
+c0190448 l     O .rodata	00000010 SYSCALL_METHODS
+c0190460 l     O .rodata	00000010 SYSCALL_VBEMODE
+c010089e l     F .text	00000007 _hlt
+c01008a5 l     F .text	00000007 _cli
+c018e140 l     O .data	00000084 EXCEPTION_MSGS
+c0190648 l     O .rodata	00000010 SYSCALL_VPRINTF
+c0190660 l     O .rodata	00000010 SYSCALL_METHODS
+c0190678 l     O .rodata	00000010 SYSCALL_VBEMODE
+c018e1e0 l     O .data	00000084 EXCEPTION_MSGS
+c01909d4 l     O .rodata	00000010 SYSCALL_VPRINTF
+c01909ec l     O .rodata	00000010 SYSCALL_METHODS
+c0190a04 l     O .rodata	00000010 SYSCALL_VBEMODE
+c018e280 l     O .data	00000084 EXCEPTION_MSGS
+c0190cc8 l     O .rodata	00000010 SYSCALL_VPRINTF
+c0190ce0 l     O .rodata	00000010 SYSCALL_METHODS
+c0190cf8 l     O .rodata	00000010 SYSCALL_VBEMODE
+c018e320 l     O .data	00000084 EXCEPTION_MSGS
+c0190ee0 l     O .rodata	00000010 SYSCALL_VPRINTF
+c0190ef8 l     O .rodata	00000010 SYSCALL_METHODS
+c0190f10 l     O .rodata	00000010 SYSCALL_VBEMODE
+c0101671 l     F .text	00000024 clamp
+c018e3c0 l     O .data	00000084 EXCEPTION_MSGS
+c0191134 l     O .rodata	00000010 SYSCALL_VPRINTF
+c019114c l     O .rodata	00000010 SYSCALL_METHODS
+c0191164 l     O .rodata	00000010 SYSCALL_VBEMODE
+c0101ff7 l     F .text	00000007 _cli
+c018e460 l     O .data	00000084 EXCEPTION_MSGS
+c01914ec l     O .rodata	00000010 SYSCALL_VPRINTF
+c0191504 l     O .rodata	00000010 SYSCALL_METHODS
+c019151c l     O .rodata	00000010 SYSCALL_VBEMODE
+c0102890 l       .text	00000000 _gdt_flush_ret
+c01028a3 l       .text	00000000 _idt_flush_ret
+c01028b2 l       .text	00000000 isr_common_stub
+c01028e0 l       .text	00000000 irq_common_stub
+c0102af7 l     F .text	00000007 _sti
+c018e500 l     O .data	00000084 EXCEPTION_MSGS
+c01917f4 l     O .rodata	00000010 SYSCALL_VPRINTF
+c019180c l     O .rodata	00000010 SYSCALL_METHODS
+c0191824 l     O .rodata	00000010 SYSCALL_VBEMODE
+c018e5a0 l     O .data	00000084 EXCEPTION_MSGS
+c0191afc l     O .rodata	00000010 SYSCALL_VPRINTF
+c0191b14 l     O .rodata	00000010 SYSCALL_METHODS
+c0191b2c l     O .rodata	00000010 SYSCALL_VBEMODE
+c018e640 l     O .data	00000084 EXCEPTION_MSGS
+c0191d28 l     O .rodata	00000010 SYSCALL_VPRINTF
+c0191d40 l     O .rodata	00000010 SYSCALL_METHODS
+c0191d58 l     O .rodata	00000010 SYSCALL_VBEMODE
+c018e6e0 l     O .data	00000084 EXCEPTION_MSGS
+c0192004 l     O .rodata	00000010 SYSCALL_VPRINTF
+c019201c l     O .rodata	00000010 SYSCALL_METHODS
+c0192034 l     O .rodata	00000010 SYSCALL_VBEMODE
+c0103862 l     F .text	00000024 clamp
+c018e780 l     O .data	00000084 EXCEPTION_MSGS
+c01922f0 l     O .rodata	00000010 SYSCALL_VPRINTF
+c0192308 l     O .rodata	00000010 SYSCALL_METHODS
+c0192320 l     O .rodata	00000010 SYSCALL_VBEMODE
+c018e820 l     O .data	00000084 EXCEPTION_MSGS
+c019254c l     O .rodata	00000010 SYSCALL_VPRINTF
+c0192564 l     O .rodata	00000010 SYSCALL_METHODS
+c019257c l     O .rodata	00000010 SYSCALL_VBEMODE
+c018e8c0 l     O .data	00000084 EXCEPTION_MSGS
+c0193178 l     O .rodata	00000010 SYSCALL_VPRINTF
+c0193190 l     O .rodata	00000010 SYSCALL_METHODS
+c01931a8 l     O .rodata	00000010 SYSCALL_VBEMODE
+c018e960 l     O .data	00000084 EXCEPTION_MSGS
+c019343c l     O .rodata	00000010 SYSCALL_VPRINTF
+c0193454 l     O .rodata	00000010 SYSCALL_METHODS
+c019346c l     O .rodata	00000010 SYSCALL_VBEMODE
+c018ea00 l     O .data	00000084 EXCEPTION_MSGS
+c0193654 l     O .rodata	00000010 SYSCALL_VPRINTF
+c019366c l     O .rodata	00000010 SYSCALL_METHODS
+c0193684 l     O .rodata	00000010 SYSCALL_VBEMODE
+c0109338 l     F .text	00000007 _cli
+c010933f l     F .text	00000007 _sti
+c018eaa0 l     O .data	00000084 EXCEPTION_MSGS
+c0193978 l     O .rodata	00000010 SYSCALL_VPRINTF
+c0193990 l     O .rodata	00000010 SYSCALL_METHODS
+c01939a8 l     O .rodata	00000010 SYSCALL_VBEMODE
+c018eb40 l     O .data	00000084 EXCEPTION_MSGS
+c0193c58 l     O .rodata	00000010 SYSCALL_VPRINTF
+c0193c70 l     O .rodata	00000010 SYSCALL_METHODS
+c0193c88 l     O .rodata	00000010 SYSCALL_VBEMODE
+c018ebe0 l     O .data	00000084 EXCEPTION_MSGS
+c0193eb8 l     O .rodata	00000010 SYSCALL_VPRINTF
+c0193ed0 l     O .rodata	00000010 SYSCALL_METHODS
+c0193ee8 l     O .rodata	00000010 SYSCALL_VBEMODE
+c018ec80 l     O .data	00000084 EXCEPTION_MSGS
+c019416c l     O .rodata	00000010 SYSCALL_VPRINTF
+c0194184 l     O .rodata	00000010 SYSCALL_METHODS
+c019419c l     O .rodata	00000010 SYSCALL_VBEMODE
+c010a999 l     F .text	00000010 abs
+c018ed20 l     O .data	00000084 EXCEPTION_MSGS
+c0194398 l     O .rodata	00000010 SYSCALL_VPRINTF
+c01943b0 l     O .rodata	00000010 SYSCALL_METHODS
+c01943c8 l     O .rodata	00000010 SYSCALL_VBEMODE
+c018edc0 l     O .data	00000084 EXCEPTION_MSGS
+c0194664 l     O .rodata	00000010 SYSCALL_VPRINTF
+c019467c l     O .rodata	00000010 SYSCALL_METHODS
+c0194694 l     O .rodata	00000010 SYSCALL_VBEMODE
+c01946ac l     O .rodata	00000010 SYSCALL_VPRINTF
+c01946c4 l     O .rodata	00000010 SYSCALL_METHODS
+c01946dc l     O .rodata	00000010 SYSCALL_VBEMODE
+c018ee60 l     O .data	00000084 EXCEPTION_MSGS
+c01949d4 l     O .rodata	00000010 SYSCALL_VPRINTF
+c01949ec l     O .rodata	00000010 SYSCALL_METHODS
+c0194a04 l     O .rodata	00000010 SYSCALL_VBEMODE
+c018ef00 l     O .data	00000084 EXCEPTION_MSGS
+c0194bec l     O .rodata	00000010 SYSCALL_VPRINTF
+c0194c04 l     O .rodata	00000010 SYSCALL_METHODS
+c0194c1c l     O .rodata	00000010 SYSCALL_VBEMODE
+c018efa0 l     O .data	00000084 EXCEPTION_MSGS
+c0194e04 l     O .rodata	00000010 SYSCALL_VPRINTF
+c0194e1c l     O .rodata	00000010 SYSCALL_METHODS
+c0194e34 l     O .rodata	00000010 SYSCALL_VBEMODE
+c018f040 l     O .data	00000084 EXCEPTION_MSGS
+c010bd1b l     F .text	00000024 clamp
+c018f0e0 l     O .data	00000084 EXCEPTION_MSGS
+c01951ec l     O .rodata	00000010 SYSCALL_VPRINTF
+c0195204 l     O .rodata	00000010 SYSCALL_METHODS
+c019521c l     O .rodata	00000010 SYSCALL_VBEMODE
+c018f180 l     O .data	00000084 EXCEPTION_MSGS
+c01954ac l     O .rodata	00000010 SYSCALL_VPRINTF
+c01954c4 l     O .rodata	00000010 SYSCALL_METHODS
+c01954dc l     O .rodata	00000010 SYSCALL_VBEMODE
+c018f220 l     O .data	00000084 EXCEPTION_MSGS
+c01957bc l     O .rodata	00000010 SYSCALL_VPRINTF
+c01957d4 l     O .rodata	00000010 SYSCALL_METHODS
+c01957ec l     O .rodata	00000010 SYSCALL_VBEMODE
+c018f2c0 l     O .data	00000084 EXCEPTION_MSGS
+c0195a98 l     O .rodata	00000010 SYSCALL_VPRINTF
+c0195ab0 l     O .rodata	00000010 SYSCALL_METHODS
+c0195ac8 l     O .rodata	00000010 SYSCALL_VBEMODE
+c010b906 g     F .text	00000037 syscall_monitor
+c010a080 g     F .text	0000001c serial_println
+c0102e2a g     F .text	00000017 stack_get_size
+c010b593 g     F .text	00000053 strcpy
+c0102f77 g     F .text	00000027 mem_align
+c010a63b g     F .text	0000005a serial_validate
+c01093dc g     F .text	00000014 procmgr_unready
+c0108cf3 g     F .text	00000034 port_instr
+c010ad92 g     F .text	00000006 yield
+c0100a2c g     F .text	00000049 debug_header
+c018f164 g     O .data	00000004 KTHREAD_NAME
+c010964f g     F .text	00000006 procmgr_kill_byindex
+c0100948 g     F .text	0000002f debug_print_col
+c0101e9e g     F .text	000000bb heap_locate
+c0109ff9 g     F .text	0000004a serial_print
+c010099b g     F .text	0000002f debug_println_col
+c010a96a g     F .text	00000025 printf
+c01048d7 g     F .text	000003ea pmfs_blktable_merge_free
+c0107b59 g     F .text	00000041 ceilnum
+c010c15a g     F .text	00000033 thread_exit
+c01062f4 g     F .text	00000062 pmfs_dir_equals
+c0103b05 g     F .text	00000010 pit_get_ticks
+c0101858 g     F .text	00000072 heap_map
+c010b6d7 g     F .text	0000013c strsplit
+c0103dde g     F .text	000000aa pmfs_wipe
+c0104cc1 g     F .text	0000007b pmfs_blktable_copy
+c0100072 g     F .text	00000042 atapio_init
+c0102ae7 g       .text	00000000 irq128
+c0104e12 g     F .text	0000014a pmfs_blktable_delete_entry
+c010bc63 g     F .text	0000003e syscall_free_index
+c0109f72 g     F .text	00000042 serial_printc
+c0108e2e g     F .text	00000115 proc_create
+c0105cca g     F .text	000001bc pmfs_filetable_create_file
+c010293b g       .text	00000000 isr4
+c010b392 g     F .text	0000000a memmove
+c0102a15 g       .text	00000000 isr27
+c010cf76 g     F .text	0000000a vmm_get_kdir
+c010298d g       .text	00000000 isr13
+c0194404 g     O .rodata	00000011 HEX_VALUES
+c010adc4 g     F .text	0000003d reverse
+c0109d62 g       .text	00000000 regwrite_cr0
+c01092fc g     F .text	0000003c proc_free_index
+c01943e0 g     O .rodata	00000021 PUNCT_CHARS
+c010ab5b g     F .text	00000094 atol
+c0102abf g       .text	00000000 irq12
+c010b28d g     F .text	0000003e memcmpb
+c01029e3 g       .text	00000000 isr22
+c0190a14 g     O .rodata	00000004 elf_valid_id
+c0194460 g     O .rodata	00000004 LTOA_DIGITS
+c010299d g       .text	00000000 isr15
+c0103fe3 g     F .text	00000065 pmfs_info_write
+c010c867 g     F .text	000000cb vfs_file_read_pmfs
+c0109ed4 g     F .text	00000066 serial_getportstr
+c0190f21 g     O .rodata	00000001 KERNEL_DS_ACCESS
+c0102aab g       .text	00000000 irq10
+c010384c g     F .text	0000000c pfa_is_ready
+c0102ad3 g       .text	00000000 irq14
+c0100977 g     F .text	00000024 debug_println
+c0107bd0 g     F .text	0000026d pmfs_get_name_from_path
+c0101ffe g     F .text	00000006 idt_default_handler
+c0103858 g     F .text	0000000a pfa_get_size
+c01037fc g     F .text	00000050 pfa_free_index
+c010713a g     F .text	0000076f pmfs_get_dir_byname
+c010e000 g       .data	00000000 _boot_page_dir0
+c010cb22 g     F .text	00000087 vmm_init
+c01036c8 g     F .text	0000004f pfa_kallocate
+c01051d6 g     F .text	00000025 pmfs_blktable_validate_sector
+c010c932 g     F .text	000000f3 vfs_file_read_ramfs
+c010296b g       .text	00000000 isr9
+c010418a g     F .text	0000011a pmfs_blktable_read
+c0103242 g     F .text	000001c4 objdump_fetch_methods
+c01000b4 g     F .text	000001d0 atapio_identify
+c01030cd g     F .text	00000073 objdump_fetch_name
+c010a7d1 g     F .text	00000038 ptrarray_create
+c0102a97 g       .text	00000000 irq8
+c010b1ff g     F .text	00000047 memcmpl
+c0109649 g     F .text	00000006 procmgr_kill_byid
+c010b31b g     F .text	00000040 memcpy
+c01029ed g       .text	00000000 isr23
+c018ec64 g     O .data	00000018 SERIAL_PORTNAMES
+c010aae4 g     F .text	0000001c kfree
+c0107a01 g     F .text	00000158 pmfs_get_dir_index
+c010d23f g     F .text	00000013 pagedir_unmap
+c0102a29 g       .text	00000000 isr29
+c01013bb g     F .text	00000092 gdt_init_entries
+c010ad9e g     F .text	00000026 swap
+c0100735 g     F .text	0000001d islower
+c010cdfc g     F .text	0000017a vmm_kunmap
+c010438f g     F .text	00000246 pmfs_blktable_allocate
+c0100860 g     F .text	0000001f tolower
+c010b1ad g     F .text	0000000a system
+c018eda4 g     O .data	00000004 ITOA_STR
+c010abef g     F .text	00000192 atox
+c010a9a9 g     F .text	0000003e malloc
+c0102a3d g       .text	00000000 isr31
+c010a74b g     F .text	00000040 array_clear
+c0102e8e g     F .text	000000e9 mem_convert_size_str
+c0101131 g     F .text	00000013 elf_validate_type
+c010a42a g     F .text	00000026 serial_printf
+c0100284 g     F .text	000001c9 atapio_read
+c01008dd g     F .text	0000001b debug_newline
+c010044d g     F .text	000001fe atapio_write
+c010ae01 g     F .text	000000e0 itoa
+c010132c g     F .text	00000006 elf_load_file
+c01029d9 g       .text	00000000 isr21
+c0102758 g     F .text	00000038 irq_register
+c0100780 g     F .text	00000056 ispunct
+c0109d6a g       .text	00000000 regwrite_cr3
+c0102cfa g     F .text	0000001e kernel_bootstage_1
+c0101062 g     F .text	000000ac panicf
+c0108d27 g     F .text	0000001f port_outb
+c0104048 g     F .text	000000f2 pmfs_blktable_print
+c0102ab5 g       .text	00000000 irq11
+c0101351 g     F .text	0000006a gdt_init
+c01034e8 g     F .text	00000073 pfa_init_kernel
+c01007d6 g     F .text	0000002a isspace
+c01018ca g     F .text	0000013f heap_print
+c0102a1f g       .text	00000000 isr28
+c0108a45 g     F .text	00000023 pmm_create
+c010b8c5 g     F .text	00000041 syscall_callback
+c0103997 g     F .text	0000004c pit_callback
+c010b688 g     F .text	0000004f stradd
+c0109a58 g     F .text	000002bc ramfs_read_file
+c010bca1 g     F .text	00000035 syscall_methods
+c010be26 g     F .text	00000190 thread_create_idle
+c0102963 g       .text	00000000 isr8
+c0107e3d g     F .text	0000019b pmfs_get_parent_path_from_path
+c010c4c2 g     F .text	0000000a vdrivemgr_unregister
+c0102a79 g       .text	00000000 irq5
+c01948bc g     O .rodata	00000010 NULL_SYSCALL_ARGS
+c018e000 g       .data	00000000 _boot_page_dir0_end
+c0109d48 g       .text	00000000 regread_cr3
+c0102e1b g     F .text	0000000f stack_get_bottom
+c0109655 g     F .text	0000020b procmgr_schedule
+c010b246 g     F .text	00000047 memcmpw
+c010081d g     F .text	00000043 isxdigit
+c0103c49 g     F .text	00000195 pmfs_format
+c01029cf g       .text	00000000 isr20
+c01009ca g     F .text	0000002b debug_vprintf
+c010ca25 g     F .text	00000006 vfs_get_files
+c0101a09 g     F .text	000000e5 heap_alloc
+c0103886 g     F .text	000000fb pit_init
+c0106214 g     F .text	0000002d pmfs_filetable_validate_sector
+c0102995 g       .text	00000000 isr14
+c010cada g     F .text	00000048 vfs_type_string
+c01008ac g     F .text	00000018 debug_toggle
+c010a70d g     F .text	0000003e array_dispose
+c010831a g     F .text	0000032b pmfs_file_read
+c010c575 g     F .text	000000fb vfs_init
+c0102945 g       .text	00000000 isr5
+c0190f20 g     O .rodata	00000001 KERNEL_CS_ACCESS
+c010b656 g     F .text	0000000a strrchr
+c0102004 g     F .text	00000148 idt_init
+c010413a g     F .text	00000031 pmfs_blktable_sector_from_index
+c01037f6 g     F .text	00000006 pfa_free
+c010cba9 g     F .text	00000253 vmm_kmap
+c0102d18 g     F .text	00000075 kernel_main
+c010c262 g     F .text	000000f1 vdrive_init
+c010d26b g     F .text	00000039 pagedir_read
+c0109643 g     F .text	00000006 procmgr_kill_byname
+c019152c g     O .rodata	00000001 IDT_EXCEPTION_ATTRS
+c010ad81 g     F .text	00000007 atof
+c0102891 g       .text	00000000 _idt_flush
+c0109346 g     F .text	00000082 procmgr_init
+c0107fd8 g     F .text	00000342 pmfs_file_create
+c010b39c g     F .text	000000b8 strcat
+c010bcd6 g     F .text	0000001c syscall_vbemode
+c0103b38 g     F .text	00000111 pmfs_mount
+c0102a83 g       .text	00000000 irq6
+c0109d14 g     F .text	0000002b ramfs_get_files
+c0106356 g     F .text	00000087 pmfs_file_equals
+c010a950 g     F .text	0000001a vprintf
+c0102a51 g       .text	00000000 irq1
+c0103efd g     F .text	00000096 pmfs_info_create
+c0190f22 g     O .rodata	00000001 KERNEL_CS_FLAGS
+c0108645 g     F .text	000003b7 pmfs_file_write
+c0105a4f g     F .text	000000cb pmfs_filetable_write_file
+c010c445 g     F .text	0000007d vdrivemgr_register
+c0106049 g     F .text	000001cb pmfs_filetable_delete_file
+c010d2a4 g     F .text	00000043 pagedir_get_index
+c010a09c g     F .text	00000027 serial_println_col
+c010360f g     F .text	00000097 pfa_map
+c01008f8 g     F .text	0000002c debug_printc
+c0109d59 g       .text	00000000 regread_ss
+c010b1b7 g     F .text	00000048 memchr
+c0100e17 g     F .text	00000192 debug_dumpregs
+c01099dc g     F .text	00000006 procmgr_get_byindex
+c0109860 g     F .text	000000ff procmgr_next_process
+c010a830 g     F .text	00000045 ptrarray_dispose
+c0102afe g     F .text	000001fc kernel_bootstage_0
+c010110e g     F .text	00000023 elf_validate
+c010ba2f g     F .text	0000005b syscall_pop
+c010bd3f g     F .text	000000e7 thread_create_kernel
+c0100030 g       .text	00000000 _start
+c01008d4 g     F .text	00000009 debug_breakpoint
+c010b66a g     F .text	0000000a strstr
+c01093c8 g     F .text	00000014 procmgr_ready
+c0100b1d g     F .text	00000038 debug_error
+c01039e3 g     F .text	00000122 pit_calculate
+c010ad88 g     F .text	0000000a rand
+c0105e86 g     F .text	000001c3 pmfs_filetable_delete_dir
+c0102923 g       .text	00000000 isr1
+c010a5d3 g     F .text	00000034 serial_recieved
+c0102aa1 g       .text	00000000 irq9
+c01027eb g     F .text	00000084 _irq_handler
+c0100800 g     F .text	0000001d isupper
+c010b53f g     F .text	00000054 strncmp
+c010ba8a g     F .text	000000eb syscall_handle_args
+c0102a0b g       .text	00000000 isr26
+c010b5e6 g     F .text	00000035 strncpy
+c0102dbc g     F .text	00000023 kernel_get_physical_end
+c0108a68 g     F .text	000000d8 pmm_create_ext
+c010297d g       .text	00000000 isr11
+c0107b9a g     F .text	00000036 pmfs_bytes_to_sectors
+c010d002 g     F .text	0000023d pagedir_map
+c0103b1f g     F .text	0000000f pit_get_millis_total
+c01036a6 g     F .text	00000022 pfa_allocate
+c0100faf g     F .text	000000b3 panic
+c010144d g     F .text	00000224 gdt_set_desc
+c0108cb8 g     F .text	0000001f port_inw
+c010995f g     F .text	00000071 procmgr_next_thread
+c010a78b g     F .text	00000046 array_get
+c010b674 g     F .text	0000000a strtok
+c0108d7f g     F .text	00000034 port_outstr
+c0103981 g     F .text	00000016 pit_disable
+c010b2cb g     F .text	00000050 memcmp
+c010355b g     F .text	000000b4 pfa_init
+c010ab00 g     F .text	00000051 freearray
+c01063dd g     F .text	0000062c pmfs_parent_from_path
+c010068a g     F .text	00000030 isalpha
+c010c670 g     F .text	000001f7 vfs_file_read
+c010b454 g     F .text	0000009f strncat
+c010a695 g     F .text	00000045 array_create
+c010b813 g     F .text	000000b2 syscall_init
+c0100924 g     F .text	00000024 debug_print
+c0102ac9 g       .text	00000000 irq13
+c0102985 g       .text	00000000 isr12
+c010471b g     F .text	000001bc pmfs_blktable_nearest
+c0100b55 g     F .text	000002c2 debug_dumpmem
+c01053b4 g     F .text	00000126 pmfs_root_create
+c0103b15 g     F .text	0000000a pit_get_millis
+c0109d44 g       .text	00000000 regread_cr2
+c01099e2 g     F .text	0000003b procmgr_free_index
+c010bb75 g     F .text	000000ee syscall_execute
+c010b35b g     F .text	00000037 memset
+c010949b g     F .text	000001a2 procmgr_unload
+c010a905 g     F .text	0000004b ptrarray_get
+c010a9e7 g     F .text	0000003e malloc_c
+c0103029 g     F .text	000000a4 objdump_fetch_addr
+c01024a5 g     F .text	000001d6 idt_init_irqs
+c0106241 g     F .text	000000b3 pmfs_filetable_freeindex
+c010b67e g     F .text	0000000a strxfrm
+c0102e41 g     F .text	0000004d mem_convert_size
+c010291c g       .text	00000000 isr0
+c0102a5b g       .text	00000000 irq2
+c0104f5c g     F .text	00000121 pmfs_blktable_fill
+c0103406 g     F .text	000000e2 objdump_count_methods
+c01006f6 g     F .text	0000003f isgraph
+c0103717 g     F .text	000000df pfa_allocated_entry
+c0102790 g     F .text	00000036 irq_unregister
+c01078a9 g     F .text	00000158 pmfs_get_file_index
+c010064b g     F .text	0000003f isalnum
+c0109d79 g     F .text	0000014f serial_setport
+c0100752 g     F .text	0000002e isprint
+c0101f59 g     F .text	0000009e heap_free_index
+c010006c g     F .text	00000006 atapio_callback
+c010a0d9 g     F .text	00000351 serial_vprintf
+c01029f7 g       .text	00000000 isr24
+c01029a7 g       .text	00000000 isr16
+c0106a09 g     F .text	00000731 pmfs_get_file_byname
+c010b4fd g     F .text	00000042 strcmp
+c0100ae5 g     F .text	00000038 debug_warn
+c0102ddf g     F .text	0000002d kernel_get_size
+c01957fc g     O .rodata	00000011 NULL_VFS_FILE
+c0103140 g     F .text	00000102 objdump_method_name
+c0102e0c g     F .text	0000000f stack_get_top
+c0102931 g       .text	00000000 isr3
+c0108d67 g     F .text	00000018 port_outl
+c010a450 g     F .text	00000183 serial_setcol
+c010c4cc g     F .text	0000006a vdrivemgr_get_byid
+c010922f g     F .text	000000cd proc_unload_thread
+c010b61b g     F .text	0000000a strcspn
+c0100a75 g     F .text	00000038 debug_ok
+c010afc2 g     F .text	0000001f ltoa
+c01093f0 g     F .text	000000ab procmgr_load
+c0100fa9 g     F .text	00000006 debug_dumpregs_raw
+c010a98f g     F .text	0000000a scanf
+c01089fc g     F .text	00000049 pmm_init
+c01045d5 g     F .text	00000146 pmfs_blktable_free
+c0101aee g     F .text	00000187 heap_free
+c0109fb4 g     F .text	00000045 serial_printc_col
+c0102d8d g     F .text	00000025 idle_main
+c010c190 g       .text	00000000 _thread_switch
+c010a809 g     F .text	00000027 ptrarray_create_ext
+c010294f g       .text	00000000 isr6
+c0102a8d g       .text	00000000 irq7
+c0109ec8 g     F .text	0000000c serial_getport
+c0108cd7 g     F .text	0000001c port_inl
+c01008c4 g     F .text	00000010 debug_halt
+c0104d3c g     F .text	000000d6 pmfs_blktable_create_entry
+c0109d4c g       .text	00000000 regread_cr4
+c010a6da g     F .text	00000033 array_create_ext
+c0108db3 g     F .text	0000007b proc_create_kernel
+c01029bb g       .text	00000000 isr18
+c01054da g     F .text	000000fb pmfs_filetable_print
+c010267b g     F .text	000000dd idt_set_desc
+c0108b40 g     F .text	000000f2 pmm_delete
+c0109f3a g     F .text	00000038 serial_read
+c0100aad g     F .text	00000038 debug_info
+c01006de g     F .text	00000018 isdigit
+c010afe1 g     F .text	000001cc strhex
+c0109d50 g       .text	00000000 regread_ds
+c01052e9 g     F .text	000000cb pmfs_blktable_freeindex
+c0102a47 g       .text	00000000 irq0
+c010a607 g     F .text	00000034 serial_send
+c0103f93 g     F .text	00000050 pmfs_info_read
+c010214c g     F .text	00000359 idt_init_exceptions
+c0191d68 g     O .rodata	0000000f KERNEL_OBJDUMP_FNAME
+c0108c9b g     F .text	0000001d port_inb
+c010d252 g     F .text	00000019 pagedir_write
+c010560c g     F .text	0000001f pmfs_filetable_offset_from_index
+c010aee1 g     F .text	000000e1 ultoa
+c0109d72 g       .text	00000000 regwrite_ds
+c010963d g     F .text	00000006 procmgr_kill
+c0190f23 g     O .rodata	00000001 KERNEL_DS_FLAGS
+c0102975 g       .text	00000000 isr10
+c010aa34 g     F .text	00000025 kmalloc
+c010ad98 g     F .text	00000006 exit
+c010c353 g     F .text	00000082 vdrive_validate_id
+c010b9c8 g     F .text	00000067 syscall_push
+c0108c32 g     F .text	00000069 pmm_free_index
+c010916e g     F .text	000000c1 proc_load_thread
+c01099d6 g     F .text	00000006 procmgr_get_byid
+c0109d40 g       .text	00000000 regread_cr0
+c010507d g     F .text	00000159 pmfs_blktable_at_index
+c01051fb g     F .text	000000ee pmfs_blktable_get_index
+c010aa25 g     F .text	0000000f malloc_a
+c010ab51 g     F .text	0000000a atoi
+c01006ba g     F .text	00000024 iscntrl
+c0109a1d g     F .text	0000003b ramfs_init
+c0103b2e g     F .text	0000000a pit_get_seconds
+c01029b1 g       .text	00000000 isr17
+c010292a g       .text	00000000 isr2
+c010b93d g     F .text	0000008b syscall_register
+c01029c5 g       .text	00000000 isr19
+c010a0c3 g     F .text	00000016 serial_newline
+c010b660 g     F .text	0000000a strspn
+c01027c6 g     F .text	00000025 _isr_handler
+c0101695 g     F .text	000001c3 heap_init
+c0102a33 g       .text	00000000 isr30
+c010bcf2 g     F .text	00000029 syscall_vprintf
+c01009f5 g     F .text	00000037 debug_printf
+c010b625 g     F .text	00000027 strlen
+c0102db2 g     F .text	0000000a kernel_get_physical
+c0103e88 g     F .text	00000075 pmfs_get_info
+c010ca9b g     F .text	0000003f vfs_path_remove_drive_id
+c010087f g     F .text	0000001f toupper
+c0101e1c g     F .text	00000082 heap_delete_entry
+c0102870 g       .text	00000000 _gdt_flush
+c0108f43 g     F .text	0000022b proc_create_elf
+c010a875 g     F .text	00000090 ptrarray_clear
+c01055d5 g     F .text	00000037 pmfs_filetable_sector_from_index
+c0105987 g     F .text	000000c8 pmfs_filetable_write_dir
+c0102add g       .text	00000000 irq15
+c010b4f3 g     F .text	0000000a strchr
+c010c3d5 g     F .text	00000070 vdrivemgr_init
+c010c536 g     F .text	0000003f vdrivemgr_free_index
+c010bfb6 g     F .text	000001a4 thread_create
+c0102959 g       .text	00000000 isr7
+c010c1e6 g     F .text	0000007c vdrive_set_type
+c0102a01 g       .text	00000000 isr25
+c0101d6b g     F .text	000000b1 heap_create_entry
+c01057d9 g     F .text	000001ae pmfs_filetable_read_file
+c010562b g     F .text	000001ae pmfs_filetable_read_dir
+c019152d g     O .rodata	00000001 IDT_IRQ_ATTRS
+c0105b1a g     F .text	000001b0 pmfs_filetable_create_dir
+c010cf80 g     F .text	00000082 pagedir_init
+c010ca2b g     F .text	00000070 vfs_drive_id_from_path
+c0101144 g     F .text	000001e8 elf_load
+c01099d0 g     F .text	00000006 procmgr_get_byname
+c0108d46 g     F .text	00000021 port_outw
+c0102f9e g     F .text	0000008b objdump_load
+c010a043 g     F .text	0000003d serial_print_col
+c01042a4 g     F .text	000000eb pmfs_blktable_write
+c010d2e7 g     F .text	00000058 pagedir_get_free
+c0102a6f g       .text	00000000 irq4
+c010b64c g     F .text	0000000a strpbrk
+c0102a65 g       .text	00000000 irq3
+c010416b g     F .text	0000001f pmfs_blktable_offset_from_index
+c0101332 g     F .text	0000001f _kernel_entry
+c0101c75 g     F .text	000000f6 heap_alloc_entry
+c010aa59 g     F .text	0000008b free
+
+

@@ -33,7 +33,7 @@ void pit_init(uint32_t freq, irq_handler_t handler)
     pit_ticks        = 0;
     pit_timer        = 0;
     pit_switch_timer = 0;
-    pit_switch_freq  = 30;
+    pit_switch_freq  = pit_freq / 8;
 
     // calculate actual frequency
     uint32_t f = 1193180 / pit_freq;
@@ -67,6 +67,7 @@ void pit_callback(idt_regs_t* regs)
         pit_switch_timer = 0;
         if (PROCMGR.pit_ready) 
         { 
+            //printf("FORCED SWITCH\n");
             procmgr_schedule(false); 
         }
     }

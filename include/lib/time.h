@@ -14,4 +14,6 @@ typedef struct
 } PACKED time_t;
 
 /// @brief Get time string @param time Time value @param military Use 24-hour format @param seconds Show seconds @return Allocated string of time
-char* time_get_string(time_t time, bool military, bool seconds);
+char* timestr(time_t time, bool military, bool seconds);
+
+time_t timenow();

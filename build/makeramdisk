@@ -1,5 +1,6 @@
-create 4194304
+create 6291456
 add kernel.dump external/ramdisk/kernel.dump
+add vesa.bin external/ramdisk/vesa.bin
 save ramdisk.img
 print
 exit

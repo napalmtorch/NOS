@@ -1,7 +1,6 @@
 #pragma once
 #include <lib/stdint.h>
 #include <lib/stddef.h>
-#include <kernel/memory/heap.h>
 
 /// @brief Request allocated memory region of specified size @param size Size of allocation @return Pointer to allocated memory
 void* malloc(size_t size);
@@ -9,10 +8,10 @@ void* malloc(size_t size);
 /// @brief Request allocated memory region of specified size and fill with zeros @param size Size of allocation @return Pointer to allocated memory
 void* malloc_c(size_t size);
 
-void* malloc_a(size_t size, HEAPTYPE type);
+void* malloc_a(size_t size, uint8_t type);
 
 /// @brief Request allocated memory region on kernel heap of specified size, type, and fill with zeros @param size Size of allocation @param type Type of allocation @return Pointer to allocated memory
-void* kmalloc(size_t size, HEAPTYPE type);
+void* kmalloc(size_t size, uint8_t type);
 
 /// @brief Free existing allocated memory region @param ptr Pointer to allocated memory
 void free(void* ptr);
